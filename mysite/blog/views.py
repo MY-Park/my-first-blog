@@ -4,8 +4,6 @@ from .models import Post, Comment
 from .forms import PostForm, CommentForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth import login as auth_login
-from django.contrib.auth import logout as auth_logout
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
@@ -50,7 +48,6 @@ def post_remove(request, pk):
     post.delete()
     return redirect('post_list')
 
-"""
 def login(request):
     if request.method == 'POST':
         login_form = AuthenticationForm(request, request.POST)
@@ -67,6 +64,7 @@ def logout(request):
     auth_logout(request)
     return redirect('posts:list')
 
+"""
 def signup(request):
     # HTTP Method가 POST 인 경우
     if request.method == 'POST':
