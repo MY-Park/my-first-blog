@@ -50,7 +50,7 @@ def post_remove(request, pk):
     post.delete()
     return redirect('post_list')
 
-
+"""
 def login(request):
     if request.method == 'POST':
         login_form = AuthenticationForm(request, request.POST)
@@ -81,6 +81,7 @@ def signup(request):
         signup_form = UserCreationForm()
 
     return render(request, 'accounts/signup.html', {'signup_form': signup_form})
+"""
 
 def add_comment_to_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
