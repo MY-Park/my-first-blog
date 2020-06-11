@@ -1,4 +1,105 @@
-a {
-    color: green;
-    text-decoration: none;
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  /* background-color: #92a8d1; */
+}
+.hero{
+  height: 100%;
+  width: 100%;
+  background-image:url("bskyblue.jpg");
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+}
+h1 {
+  font-family: Pacifico;
+  text-align: center;
+  margin: 5% auto 0 auto; /* top right bottom left */
+  font-size: 40px;
+  /* position: relative; */
+  /* font-style: normal; */
+  /* font-variant: normal; */
+  /* font-weight: 900; */
+  /* line-height: 50px; */
+  /* padding: 0px; */
+}
+.form-box{
+  width:380px;
+  height: 430px;
+  position: relative;
+  margin: 0 auto 3% auto;
+  background: #C3D2EF;
+  padding: 5px;
+  overflow: hidden; /* /숨겨져야 옆으로 넘어갈때 안보임/ */
+}
+.button-box{
+  width: 220px;
+  margin: 30px auto 15px auto;
+  position: relative;
+  box-shadow: 0 0 7px 1px #306bb6bd;
+  border-radius: 30px;
+}
+.toggle-btn{
+  padding: 10px 30px;
+  cursor:pointer;
+  background: transparent;
+  border: 0;
+  outline: none;
+  position: relative;
+}
+#btn{
+  top: 0;
+  left: 0;
+  font-weight: bold;
+  font-size: 13px;
+  position: absolute;
+  width: 110px;
+  height: 100%;
+  /* background: #3487e9; */
+  background: linear-gradient(to right, #3487e9, #83AFE2);
+  border-radius: 30px;
+  transition: .5s;
+}
+.input-group{
+  top: 100px;
+  position: absolute;
+  width: 280px;
+  transition: .5s;
+  align-items: center;
+}
+.input-field{
+  width: 100%;
+  padding: 10px 0;
+  margin: 5px 0;
+  border-left: 0;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 1px solid #999;
+  outline: none;
+  background: transparent;
+}
+.submit-btn{
+  font-weight: bold;
+  font-size: 14px;
+  width: 85%;
+  padding: 10px 30px;
+  cursor: pointer;
+  display: block;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+  /* margin: auto; */
+  background: #88AAD7;
+  border: 0;
+  outline: none;
+  border-radius: 30px;
+}
+#login{
+  left: 50px;
+}
+#register{
+  left: 450px;
 }
