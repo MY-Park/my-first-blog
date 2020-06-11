@@ -9,14 +9,10 @@ from django.views.generic.edit import CreateView
 #from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.models import User
 
-<<<<<<< HEAD
-def intro(request):
-    return render(request, 'blog/intro.html')
-
-=======
 from django.contrib.auth import login
 from django.shortcuts import render, redirect
 from .forms import UserForm
+
 
 def signup(request):
     if request.method == "POST":
@@ -30,7 +26,6 @@ def signup(request):
         return render(request, 'registration/signup.html', {'form': form})
 
 @login_required
->>>>>>> newbranch
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     return render(request, 'blog/post_list.html', {'posts': posts})
@@ -75,7 +70,6 @@ def post_remove(request, pk):
     post.delete()
     return redirect('post_list')
 
-@login_required
 def add_comment_to_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
