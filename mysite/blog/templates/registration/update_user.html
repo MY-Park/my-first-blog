@@ -1,0 +1,49 @@
+{% extends "blog/auth.html" %}
+{% block content %}
+
+    <div class="hero">
+        <h1>Tunnect</h1>
+        <div class="form-box">
+            {% if form.errors %}
+        <p>이름과 비밀번호가 일치하지 않습니다. 다시 시도해주세요.</p>
+    {% endif %}
+          <div class="button-box">
+            <div id="btn"></div>
+            <button type="button" class="toggle-btn" onclick="login()">로그인</button>
+            <button type="button" class="toggle-btn" onclick="register()">회원가입</button>
+          </div>
+          <form method="post" id="login" class="input-group" action="{% url 'login' %}">
+              {% csrf_token %}
+            <input type="text" class="input-field" id="{{ form.username.id_for_label }}" placeholder="아이디" name="{{ form.username.html_name }}" required>
+            <input type="text" class="input-field" id="{{ form.password.id_for_label }}" name="{{ form.password.html_name }}" placeholder="비밀번호" required>
+            <button type="submit" class="submit-btn">로그인</button>
+              <input type="hidden" name="next" value="{{ next }}" />
+          </form>
+          <form id="register" class="input-group" method="post">
+              {% csrf_token %}
+                {{ user_form.as_p }}
+                {{ profile_form.as_p }}
+              <button type="submit" class="submit-btn">업데이트</button>
+          </form>
+        </div>
+    </div>
+      <script>
+  var x = document.getElementById("login");
+  var y = document.getElementById("register");
+  var z = document.getElementById("btn");
+
+  function register(){
+    // 회원가입 정보입력시 로그인 정보 입력 칸이 왼쪽으로 간다//
+    x.style.left = "-400px";
+    y.style.left = "50px";
+    z.style.left = "110px";
+  }
+  register();
+  function login(){
+  location.href = "../login";
+    x.style.left = "50px";
+    y.style.left = "450px";
+    z.style.left = "0px";
+  }
+  </script>
+{% endblock %}

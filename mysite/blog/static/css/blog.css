@@ -1,6 +1,8 @@
-h1 a {
-    color: #FCA205;
-    font-family: 'Lobster';
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Pacifico&display=swap');
+
+a {
+    color: #6798FD;
+    /*font-family: 'Noto Sans KR', sans-serif;*/
 }
 
 body {
@@ -8,7 +10,7 @@ body {
 }
 
 .page-header {
-    background-color: #ff9400;
+    background-color: #6798FD;
     margin-top: 0;
     padding: 20px 20px 20px 40px;
 }
@@ -24,7 +26,8 @@ body {
 }
 
 h1, h2, h3, h4 {
-    font-family: 'Lobster', cursive;
+    font-family: 'Noto Sans KR', sans-serif;
+    /*font-family: 'Pacifico', cursive;*/
 }
 
 .date {
