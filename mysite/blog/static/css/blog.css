@@ -1,12 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Pacifico&display=swap');
-
+*{
+  margin: 0;
+  padding: 0;
+}
 a {
     color: #6798FD;
-    /*font-family: 'Noto Sans KR', sans-serif;*/
 }
 
 body {
-    padding-left: 15px;
+  /* background: #C3D2EF; */
 }
 
 .page-header {
@@ -16,8 +18,8 @@ body {
 }
 
 .page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
-    color: #ffffff;
-    font-size: 36pt;
+    color: black;
+    font-size: 40pt;
     text-decoration: none;
 }
 
@@ -25,13 +27,14 @@ body {
     margin-left: 40px;
 }
 
-h1, h2, h3, h4 {
+h1 {
     font-family: 'Noto Sans KR', sans-serif;
-    /*font-family: 'Pacifico', cursive;*/
-}
+    text-shadow: 2px 2px 5px blue;
+    }
 
 .date {
     color: #828282;
+    float: right;
 }
 
 .save {
@@ -51,6 +54,8 @@ h1, h2, h3, h4 {
 
 .post {
     margin-bottom: 70px;
+    border: 3px solid #6798FD;
+    background-color: aliceblue;
 }
 
 .post h1 a, .post h1 a:visited {

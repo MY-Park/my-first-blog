@@ -62,6 +62,9 @@ h1 {
   border-radius: 30px;
   transition: .5s;
 }
+.mypage{
+    font-family: Pacifico;
+}
 .input-group{
   top: 100px;
   position: absolute;

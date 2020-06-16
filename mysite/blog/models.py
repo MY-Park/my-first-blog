@@ -22,7 +22,7 @@ def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 
 class Post(models.Model):
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.SET_NULL)
     title = models.CharField(max_length=200)
     text = models.TextField()
     created_date = models.DateTimeField(
@@ -56,7 +56,7 @@ class Comment(models.Model):
 
 
 class Post2(models.Model):
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.SET_NULL)
     title = models.CharField(max_length=200)
     text = models.TextField()
     created_date = models.DateTimeField(
@@ -75,7 +75,7 @@ class Post2(models.Model):
         return self.comments.filter(approved_comment=True)
 
 class Comment2(models.Model):
-    post = models.ForeignKey('blog.Post2', related_name='comments', on_delete=models.DO_NOTHING)
+    post = models.ForeignKey('blog.Post2', related_name='comments', null=True, on_delete=models.SET_NULL)
     author = models.CharField(max_length=200)
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)

@@ -168,7 +168,7 @@ def post_edit2(request, pk):
 def post_remove2(request, pk):
     post = get_object_or_404(Post2, pk=pk)
     post.delete()
-    return redirect('post_list')
+    return redirect('post_list2')
 
 def add_comment_to_post2(request, pk):
     post = get_object_or_404(Post2, pk=pk)
