@@ -6,6 +6,14 @@
   <li>Username: {{ user.username }}</li>
   <li>Interest: {{ user.profile.interest }}</li>
   <li>Birth Date: {{ user.profile.birth_date }}</li>
+  <li>likes: {{ like_count }}</li>
+  <li>User Level :
+      {% if like_count < 2 %} Bronze
+      {% elif like_count < 5 %} Silver
+      {% elif like_count < 8 %} Gold
+      {% else %} Platinum
+      {% endif %}
+  </li>
 </div>
 </ul>
     <a href="{% url 'update_profile' %}">수정하기</a>

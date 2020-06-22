@@ -10,7 +10,7 @@
                 작성자:{{ post.author }}
             </div>
         {% endif %}
-        {% if user.is_authenticated %}
+        {% if user == post.author %}
             <a class="btn btn-default" href="{% url 'post_edit2' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
             <a class="btn btn-default" href="{% url 'post_remove2' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
         {% endif %}
@@ -24,9 +24,8 @@
         <div class="comment">
             <div class="date">
                 {{ comment.created_date }}
-                <a class="btn btn-default" href="{% url 'comment_remove2' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
-                {% if not comment.approved_comment %}
-                    <a class="btn btn-default" href="{% url 'comment_approve2' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
+                {% if user == comment.author %}
+                    <a class="btn btn-default" href="{% url 'comment_remove2' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
                 {% endif %}
             </div>
             <strong>{{ comment.author }}</strong>

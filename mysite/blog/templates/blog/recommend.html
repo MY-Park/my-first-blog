@@ -1,0 +1,17 @@
+{% extends "blog/base.html" %}
+{% block content %}
+
+<div class="recommend">
+    {% for u in recom_users %}
+    <ul>
+        <li>{{ u.username }}</li>
+        <ul>
+            <li>email:
+                <a href="mailto:{{ u.email }}">{{ u.email }}</a></li>
+            <li>interest: {{ u.profile.interest }}</li>
+        </ul>
+    </ul>
+
+    {% endfor %}
+</div>
+{% endblock %}

@@ -15,6 +15,7 @@
             <a href="{% url 'post_list' %}">질문게시판</a>
             <a href="{% url 'post_list2' %}">강의요청</a>
             <a href="{% url 'mypage' %}">마이페이지</a>
+            <a href="{% url 'recommend' %}">추천페이지</a>
         </nav>
           {% if user.is_authenticated %}
               {% if request.path == '/' %}

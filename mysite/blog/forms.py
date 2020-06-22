@@ -13,7 +13,7 @@ class CommentForm(forms.ModelForm):
 
     class Meta:
         model = Comment
-        fields = ('author', 'text',)
+        fields = ('text',)
 
 class UserForm(forms.ModelForm):
     class Meta:
@@ -37,4 +37,4 @@ class CommentForm2(forms.ModelForm):
 
     class Meta:
         model = Comment2
-        fields = ('author', 'text',)
+        fields = ('text',)
