@@ -61,7 +61,7 @@ def signup(request):
 
 @login_required
 def post_list(request):
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
     return render(request, 'blog/post_list.html', {'posts': posts})
 
 @login_required
@@ -132,7 +132,7 @@ def comment_remove(request, pk):
 
 @login_required
 def post_list2(request):
-    posts = Post2.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    posts = Post2.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
     return render(request, 'blog/post_list2.html', {'posts': posts})
 
 @login_required
