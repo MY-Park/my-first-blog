@@ -17,6 +17,11 @@ from .forms import UserForm
 from django.contrib.auth import logout
 
 @login_required
+def recommend_list(request):
+    users = User.objects.all()
+    return render(request, '/recommend_list.html',{'users':users})
+
+@login_required
 def mypage(request):
     user = request.user
     return render(request, 'registration/mypage.html', {'user': user})
@@ -194,3 +199,7 @@ def comment_remove2(request, pk):
     comment = get_object_or_404(Comment2, pk=pk)
     comment.delete()
     return redirect('post_detail2', pk=comment.post.pk)
+
+def user_check(request):
+    users = User.objects.filter(username=request.GET['username'])
+    return render(request, 'registration/usercheck.html', {'num_users': len(users)})

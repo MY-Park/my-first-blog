@@ -21,4 +21,5 @@ urlpatterns = [
     path(r'^comment2/(?P<pk>\d+)/approve/$', views.comment_approve2, name='comment_approve2'),
     path(r'^comment2/(?P<pk>\d+)/remove/$', views.comment_remove2, name='comment_remove2'),
     path(r'accounts/signup/', views.signup, name='signup'),
+    path(r'accounts/check/', views.user_check, name='user_check'),
 ]
