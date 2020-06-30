@@ -16,7 +16,7 @@
           <form method="post" id="login" class="input-group" action="{% url 'login' %}">
               {% csrf_token %}
             <input type="text" class="input-field" id="{{ form.username.id_for_label }}" placeholder="아이디" name="{{ form.username.html_name }}" required>
-            <input type="text" class="input-field" id="{{ form.password.id_for_label }}" name="{{ form.password.html_name }}" placeholder="비밀번호" required>
+            <input type="password" class="input-field" id="{{ form.password.id_for_label }}" name="{{ form.password.html_name }}" placeholder="비밀번호" required>
             <button type="submit" class="submit-btn">로그인</button>
               <input type="hidden" name="next" value="{{ next }}" />
           </form>
