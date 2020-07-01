@@ -3,30 +3,30 @@
     <h2>{{ user.get_full_name }}</h2>
 
 <div class="mypage">
-    <ul >
-        <li class="title">Username</li>
-        <li>{{ user.username }}</li>
+    <ul class="board">
+        <li class="ltt_line l_line fl tc w200 list t_line lt_line" style="font-weight:bold">Username</li>
+        <li class="ltt_line fl tc w500 list t_line lt_line ">{{ user.username }}</li>
     </ul>
 
-    <ul>
-        <li class="title">Interest</li>
-        <li>{{ user.profile.interest }}</li>
+    <ul class="board">
+        <li class="l_line fl tc w200 list t_line lt_line" style="font-weight:bold">Interest</li>
+        <li class="fl tc w500 list t_line lt_line">{{ user.profile.interest }}</li>
     </ul>
 
-    <ul>
-        <li class="title">Birth Date</li>
-        <li>{{ user.profile.birth_date }}</li>
+    <ul class="board">
+        <li class="l_line fl tc w200 list t_line lt_line" style="font-weight:bold">Birth Date</li>
+        <li class="fl tc w500 list t_line lt_line">{{ user.profile.birth_date }}</li>
     </ul>
 
-    <ul>
-        <li class="title">likes</li>
-        <li>{{ like_count }}</li>
+    <ul class="board">
+        <li class="l_line fl tc w200 list t_line lt_line" style="font-weight:bold">likes</li>
+        <li class="fl tc w500 list t_line lt_line">{{ like_count }}</li>
 
     </ul>
 
-    <ul>
-        <li class="title">User Level</li>
-        <li>
+    <ul class="board">
+        <li class="l_line fl tc w200 list t_line lt_line" style="font-weight:bold">User Level</li>
+        <li class="fl tc w500 list t_line lt_line">
             {% if like_count < 2 %} Bronze
             {% elif like_count < 5 %} Silver
             {% elif like_count < 8 %} Gold
@@ -35,8 +35,9 @@
         </li>
     </ul>
 </div>
+<hr style="clear:both;">
+    <div style="margin-left: 650px; font-weight:bolder; font-size: 20px;"><a href="{% url 'update_profile' %}">수정하기</a></div>
 
-    <a href="{% url 'update_profile' %}">수정하기</a>
 {% endblock %}
 
 {#<style>#}
