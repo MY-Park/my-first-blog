@@ -31,10 +31,13 @@ class ProfileForm(forms.ModelForm):
 class PostForm2(forms.ModelForm):
     class Meta:
         model = Post2
-        fields = ('title', 'text',)
+        fields = ('meeting_time', 'title', 'text',)
 
 class CommentForm2(forms.ModelForm):
 
     class Meta:
         model = Comment2
         fields = ('text',)
+
+class DateForm(forms.Form):
+    date = forms.DateTimeField(input_formats=['%d/%m/%Y %H:%M'])

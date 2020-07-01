@@ -2,8 +2,22 @@
 
 {% block content %}
     <h1>강의 요청하기</h1>
-    <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_p }}
+    <form method="POST" class="post-form" action="{% url 'post_edit2' pk=form.instance.pk %}">{% csrf_token %}
+        <label for="meeting_time">강의 요청 날짜와 시간을 선택하세요 :</label>
+            <input type="datetime-local" id='meeting_time'
+                   name="meeting_time" value="2020-06-23T19:30"
+                   min="2020-06-23T00:00" max="2020-12-31T00:00">
+        <script>
+            document.getElementById('meeting_time').value= new Date().toISOString().slice(0, 16);
+        </script>
+        </p>
+        <p><label for="title">Title:</label> <input type="text" name="title" maxlength="200" id=title></p>
+        <p><label for="text">Text:</label> <textarea name="text" cols="40" rows="10" id=text></textarea></p>
+{#        <label for = "meeting_time">강의 요청 날짜와 시간을 선택하세요 (YYYY-MM-DD HH:MM)</label>#}
+{#        {{ form.as_p }}#}
         <button type="submit" class="save btn btn-default">저장하기</button>
     </form>
 {% endblock %}
+
+
+
