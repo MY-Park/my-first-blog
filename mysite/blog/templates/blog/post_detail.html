@@ -3,32 +3,34 @@
 {% block content %}
     <div class="post">
         {% if post.published_date %}
-            <div class="date">
+            <div class="date2">
                 {{ post.published_date }}
             </div>
             <div class="author">
-                작성자:{{ post.author }}
+                작성자: {{ post.author }}
             </div>
-            <div>
-                좋아요 수: {{ num_like }}
-            </div>
-            {% if user != post.author %}
-                <div class="like">
-{#                    좋아요 수: {{ num_like }},#}
-                    {% if userlike > 0 %}
-                        이미 좋아요를 눌렀어요
-                    {% else %}
-                        <a href="{% url 'like' pk=post.pk posttype='post' %}">좋아요</a>
-                    {% endif %}
-                </div>
-            {% endif %}
+        {% endif %}
 
-        {% endif %}
         {% if user == post.author %}
-            <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-            <a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+            <a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}" style="float: right"><span class="glyphicon glyphicon-remove" style="float: right"></span></a>
+            <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}" style="float: right"><span class="glyphicon glyphicon-pencil" style="float: right"></span></a>
         {% endif %}
-        <h2>{{ post.title }}</h2>
+
+        <h2 >{{post.title }}</h2>
+
+        <div style="border-bottom: 1px solid gray; margin-bottom: 30px; margin-top: 10px">
+            좋아요 수: {{ num_like }}
+        </div>
+        {% if user != post.author %}
+                    <div class="like">
+    {#                    좋아요 수: {{ num_like }},#}
+                        {% if userlike > 0 %}
+                            이미 좋아요를 눌렀어요
+                        {% else %}
+                            <a href="{% url 'like' pk=post.pk posttype='post' %}">좋아요</a>
+                        {% endif %}
+                    </div>
+                {% endif %}
         <p>{{ post.text|linebreaksbr}}</p>
     </div>
     <hr>
@@ -44,19 +46,24 @@
                 {% if not comment.approved_comment %}
                     <a class="btn btn-default" href="{% url 'comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
                 {% endif %}
-            </div>
-            <strong>{{ comment.author }}</strong>
-            <div>
+            s
+            <div style="float: right">
                 좋아요 수: {{ comment.likes.count }}
-            </div>
-            {% if user != comment.author %}
+                {% if user != comment.author %}
                     {% if usercnt > 0 %}
                         이미 좋아요를 눌렀어요
                     {% else %}
                         <a href="{% url 'like' pk=comment.pk posttype='comment' %}">좋아요</a>
                     {% endif %}
-            {% endif %}
-            <p>{{ comment.text|linebreaks }}</p>
+                {% endif %}
+            </div>
+
+            </div>
+
+            <div>
+                <strong>{{ comment.author }}</strong>
+                <p>{{ comment.text|linebreaks }}</p >
+            </div>
 
         </div>
         {% endif %}

@@ -11,11 +11,11 @@
     </head>
     <body>
         <div class="page-header", style="background-color: #6798FD">
-        <nav>
-            <a href="{% url 'post_list' %}">질문게시판</a>
-            <a href="{% url 'post_list2' %}">강의요청</a>
-            <a href="{% url 'mypage' %}">마이페이지</a>
-            <a href="{% url 'recommend' %}">추천페이지</a>
+        <nav >
+            <a href="{% url 'post_list' %}" style="color: black !important;border-left: 1px solid black;">질문게시판</a>
+            <a href="{% url 'post_list2' %}" style="color: black !important;border-left: 1px solid black;">강의요청</a>
+            <a href="{% url 'mypage' %}" style="color: black !important;border-left: 1px solid black;">마이페이지</a>
+            <a href="{% url 'recommend' %}" style="color: black !important;border-right: 1px solid black;border-left: 1px solid black;">추천페이지</a>
         </nav>
           {% if user.is_authenticated %}
               {% if request.path == '/' %}

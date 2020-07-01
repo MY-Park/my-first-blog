@@ -1,20 +1,48 @@
 {% extends "blog/base.html" %}
 {% block content %}
     <h2>{{ user.get_full_name }}</h2>
-<ul>
+
 <div class="mypage">
-  <li>Username: {{ user.username }}</li>
-  <li>Interest: {{ user.profile.interest }}</li>
-  <li>Birth Date: {{ user.profile.birth_date }}</li>
-  <li>likes: {{ like_count }}</li>
-  <li>User Level :
-      {% if like_count < 2 %} Bronze
-      {% elif like_count < 5 %} Silver
-      {% elif like_count < 8 %} Gold
-      {% else %} Platinum
-      {% endif %}
-  </li>
+    <ul >
+        <li class="title">Username</li>
+        <li>{{ user.username }}</li>
+    </ul>
+
+    <ul>
+        <li class="title">Interest</li>
+        <li>{{ user.profile.interest }}</li>
+    </ul>
+
+    <ul>
+        <li class="title">Birth Date</li>
+        <li>{{ user.profile.birth_date }}</li>
+    </ul>
+
+    <ul>
+        <li class="title">likes</li>
+        <li>{{ like_count }}</li>
+
+    </ul>
+
+    <ul>
+        <li class="title">User Level</li>
+        <li>
+            {% if like_count < 2 %} Bronze
+            {% elif like_count < 5 %} Silver
+            {% elif like_count < 8 %} Gold
+            {% else %} Platinum
+            {% endif %}
+        </li>
+    </ul>
 </div>
-</ul>
+
     <a href="{% url 'update_profile' %}">수정하기</a>
 {% endblock %}
+
+{#<style>#}
+{#  ul li {list-style:none; }#}
+{#    .fl {float:left; }#}
+{#    .tc {text-align:center; }#}
+{##}
+{##}
+{#</style>#}

@@ -7,8 +7,20 @@
               <p>published: {{ post.published_date }}</p>
           </div>
           <h1><a href="{% url 'post_detail2' pk=post.pk %}">{{ post.title }}</a></h1>
-          <p>{{ post.text|linebreaksbr }}</p>
-          <a href="{% url 'post_detail2' pk=post.pk %}">댓글 개수: {{ post.approved_comments.count }}</a>
+          <div class="cons">{{ post.text| linebreaksbr|linebreaksbr  }}</div>
+          {% if post.approved_comments.count > 0 %}
+                  {% for comment in post.comments.all %}
+                      <a href="{% url 'post_detail2' pk=post.pk %}">
+                      <strong>{{ comment.author }}</strong>
+                      {{ comment.text|linebreaks }}
+                      </a>
+                  {% endfor %}
+              {% else %}
+                  <a href="{% url 'post_detail2' pk=post.pk %}">아직 댓글이 없습니다.</a>
+              {% endif %}
+
+{#          <p>{{ post.text|linebreaksbr }}</p>#}
+{#          <a href="{% url 'post_detail2' pk=post.pk %}">댓글 개수: {{ post.approved_comments.count }}</a>#}
       </div>
   {% endfor %}
 {% endblock %}
