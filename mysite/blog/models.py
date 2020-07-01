@@ -68,7 +68,7 @@ class Post2(models.Model):
             default=timezone.now)
     published_date = models.DateTimeField(
         default=timezone.now)
-
+    meeting_time = models.DateTimeField(default=timezone.now)
     def publish(self):
         self.published_date = timezone.now()
         self.save()

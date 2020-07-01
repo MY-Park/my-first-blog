@@ -46,7 +46,6 @@
                 {% if not comment.approved_comment %}
                     <a class="btn btn-default" href="{% url 'comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
                 {% endif %}
-            s
             <div style="float: right">
                 좋아요 수: {{ comment.likes.count }}
                 {% if user != comment.author %}
