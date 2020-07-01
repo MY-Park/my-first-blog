@@ -74,6 +74,9 @@ def signup(request):
         form = UserForm()
         return render(request, 'registration/signup.html', {'form': form})
 
+def current_time(request):
+    current_time = timezone.now()
+    return render(request, 'registration/current_time.html', {'current_time':current_time})
 
 def user_check(request):
     users = User.objects.filter(username=request.GET['username'])
@@ -187,7 +190,8 @@ def post_list2(request):
 @login_required
 def post_detail2(request, pk):
     post = get_object_or_404(Post2, pk=pk)
-    return render(request, 'blog/post_detail2.html', {'post': post})
+    cur_time = timezone.now()
+    return render(request, 'blog/post_detail2.html', {'post': post, 'cur_time': cur_time})
 
 @login_required
 def post_new2(request):

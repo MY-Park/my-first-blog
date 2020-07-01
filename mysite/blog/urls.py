@@ -23,6 +23,7 @@ urlpatterns = [
     path(r'^comment2/(?P<pk>\d+)/remove/$', views.comment_remove2, name='comment_remove2'),
     path(r'accounts/signup/', views.signup, name='signup'),
     path(r'accounts/check/', views.user_check, name='user_check'),
+    path(r'accounts/time/', views.current_time, name='current_time'),
     path(r'func/like/<int:pk><str:posttype>/', views.increment_like, name='like'),
 
 ]
