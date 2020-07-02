@@ -125,7 +125,8 @@ checkboxTheme.addEventListener('click', () => {
 
     }
     else {
-        document.body.style.backgroundColor = '#fff'
+        document.body.style.backgroundColor = '#C4D4FA'
+	alert("Hello! I am an alert box!!");
         if (document.querySelector('#muteText')) {
             document.querySelector('#muteText').style.color = "#212529"
         }

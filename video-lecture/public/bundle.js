@@ -7652,7 +7652,7 @@ checkboxTheme.addEventListener('click', () => {
 
     }
     else {
-        document.body.style.backgroundColor = '#fff'
+        document.body.style.backgroundColor = '#C4D4FA'
         if (document.querySelector('#muteText')) {
             document.querySelector('#muteText').style.color = "#212529"
         }
