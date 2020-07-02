@@ -22,6 +22,14 @@ body {
     -webkit-line-clamp: 5 !important; /* number of lines to show */
     -webkit-box-orient: vertical !important;
 }
+/*.new {*/
+/*    overflow: hidden !important;*/
+/*    text-overflow: ellipsis !important;*/
+/*    display: -webkit-box !important;*/
+/*    -webkit-line-clamp: 2 !important; !* number of lines to show *!*/
+/*    -webkit-box-orient: vertical !important;*/
+/*}*/
+
 
 .page-header {
     background-color: #6798FD;

@@ -11,10 +11,12 @@
 
           {% if post.approved_comments.count > 0 %}
               {% for comment in post.comments.all %}
-                  <a href="{% url 'post_detail' pk=post.pk %}">
-                  <strong>{{ comment.author }}</strong>
-                  {{ comment.text|linebreaks }}
-                  </a>
+                  <div class="cons">
+                      <a href="{% url 'post_detail' pk=post.pk %}">
+                          <strong>{{ comment.author }}</strong>
+                          {{ comment.text|linebreaks }}
+                      </a>
+                  </div>
               {% endfor %}
           {% else %}
               <a href="{% url 'post_detail' pk=post.pk %}">아직 댓글이 없습니다.</a>
