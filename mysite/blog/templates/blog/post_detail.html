@@ -18,11 +18,11 @@
 
         <h2 >{{post.title }}</h2>
 
-        <div style="border-bottom: 1px solid gray; margin-bottom: 30px; margin-top: 10px">
+        <div style="border-bottom: 1px solid gray; margin-bottom: 15px; margin-top: 10px">
             좋아요 수: {{ num_like }}
         </div>
         {% if user != post.author %}
-                    <div class="like">
+                    <div class="like" style="float: right;">
     {#                    좋아요 수: {{ num_like }},#}
                         {% if userlike > 0 %}
                             이미 좋아요를 눌렀어요
@@ -31,6 +31,8 @@
                         {% endif %}
                     </div>
                 {% endif %}
+        <hr style="clear:both;">
+{#        <p>linebreaksbr</p>#}
         <p>{{ post.text|linebreaksbr}}</p>
     </div>
     <hr>
@@ -38,15 +40,17 @@
     {% for comment, usercnt in comzip %}
         {% if user.is_authenticated or comment.approved_comment %}
         <div class="comment">
-            <div class="date">
+            <div class="date" style="display: inline-block">
                 {{ comment.created_date }}
                 {% if user == comment.author %}
-                <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+                    <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
                 {% endif %}
                 {% if not comment.approved_comment %}
                     <a class="btn btn-default" href="{% url 'comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
                 {% endif %}
-            <div style="float: right">
+            </div>
+            <hr style="clear:both;">
+            <div style="float: right; display: inline">
                 좋아요 수: {{ comment.likes.count }}
                 {% if user != comment.author %}
                     {% if usercnt > 0 %}
@@ -55,8 +59,6 @@
                         <a href="{% url 'like' pk=comment.pk posttype='comment' %}">좋아요</a>
                     {% endif %}
                 {% endif %}
-            </div>
-
             </div>
 
             <div>

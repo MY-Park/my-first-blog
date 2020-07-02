@@ -89,7 +89,8 @@ h1 {
 }
 
 .comment {
-    margin: 20px 0px 20px 20px;
+    /*margin: 20px 0px 20px 20px;*/
+    margin: auto !important;
 }
 .author{
     margin-left: 0.2em;
@@ -107,12 +108,12 @@ h2 {
     margin-bottom: 10px !important;
 }
 
-/* 공통옵션 */
+/* user update table for all*/
 ul li {list-style:none; }
 .fl {float:left; }
 .tc {text-align:center; }
 
-/* 게시판 목록 */
+/* user update table */
 .board {width: 900px; }
 .w500 {width:500px; }
 .w200 {width:200px; }
@@ -126,17 +127,3 @@ ul li {list-style:none; }
 	background: #C3D2EF;
 }
 
-/*ul {*/
-/*  list-style-type: none;*/
-/*  margin: 0;*/
-/*  padding: 0;*/
-/*}*/
-/*li {*/
-/*    display: inline;*/
-/*    float: left;*/
-/*}*/
-/*a {*/
-/*    display: block;*/
-/*    padding: 8px;*/
-/*    background-color: #dddddd;*/
-/*}*/
