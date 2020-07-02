@@ -35,9 +35,11 @@
                 {% if user == comment.author %}
                     <a class="btn btn-default" href="{% url 'comment_remove2' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
                 {% endif %}
-                {% if post.meeting_time < cur_time %}
-                    <form action="http://13.125.47.67:8080/" text-aligh:="" right="">
-                    <input type="submit" value="화상강의 참여하기" style="float: right"></form>
+                {% if post.author == user %}
+                    {% if post.meeting_time < cur_time %}
+                        <form action="http://13.125.47.67:8080/" text-aligh:="" right="">
+                        <input type="submit" value="화상강의 참여하기" style="float: right"></form>
+                    {% endif %}
                 {% endif %}
             </div>
             <strong>{{ comment.author }}</strong>
