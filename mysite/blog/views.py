@@ -74,10 +74,6 @@ def signup(request):
         form = UserForm()
         return render(request, 'registration/signup.html', {'form': form})
 
-def current_time(request):
-    current_time = timezone.now()
-    return render(request, 'registration/current_time.html', {'current_time':current_time})
-
 def user_check(request):
     users = User.objects.filter(username=request.GET['username'])
     return render(request, 'registration/usercheck.html', {'num_users': len(users)})

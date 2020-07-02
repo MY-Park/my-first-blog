@@ -8,7 +8,7 @@
           </div>
            <div class="meeting_time">
                 강의 요청 일시 : {{ post.meeting_time }}
-            </div>
+           </div>
           <h1><a href="{% url 'post_detail2' pk=post.pk %}">{{ post.title }}</a></h1>
           <div class="cons">{{ post.text| linebreaksbr|linebreaksbr  }}</div>
           {% if post.approved_comments.count > 0 %}
