@@ -1,0 +1,24 @@
+{% extends "blog/base.html" %}
+{% block content %}
+
+<div class="recommend">
+    {% for u in recom_users %}
+
+    <ul class="board">
+        <li class="ltt_line l_line fl tc w200 list t_line lt_line" style="font-weight:bold">Username</li>
+        <li class="ltt_line l_line fl tc w500 list t_line lt_line" style="font-weight:bold">{{ u.username }}</li>
+    </ul>
+
+    <ul class="board">
+        <li class="l_line fl tc w200 list t_line lt_line" style="font-weight:bold">Email</li>
+        <li class="fl tc w500 list t_line lt_line"><a href="mailto:{{ u.email }}">{{ u.email }}</a></li>
+    </ul>
+
+     <ul class="board">
+        <li class="l_line fl tc w200 list t_line lt_line" style="font-weight:bold">Interest</li>
+        <li class="fl tc w500 list t_line lt_line">{{ user.profile.interest }}</li>
+     </ul>
+
+    {% endfor %}
+</div>
+{% endblock %}

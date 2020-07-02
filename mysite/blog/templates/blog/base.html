@@ -11,11 +11,11 @@
     </head>
     <body>
         <div class="page-header", style="background-color: #6798FD">
-        <nav>
-            <a href="{% url 'post_list' %}">질문게시판</a>
-            <a href="{% url 'post_list2' %}">강의요청</a>
-            <a href="{% url 'mypage' %}">마이페이지</a>
-            <a href="http://13.125.47.67:8080/">화상강의</a>
+        <nav >
+            <a href="{% url 'post_list' %}" style="color: black !important;border-left: 1px solid black;">질문게시판</a>
+            <a href="{% url 'post_list2' %}" style="color: black !important;border-left: 1px solid black;">강의요청</a>
+            <a href="{% url 'mypage' %}" style="color: black !important;border-left: 1px solid black;">마이페이지</a>
+            <a href="{% url 'recommend' %}" style="color: black !important;border-right: 1px solid black;border-left: 1px solid black;">추천페이지</a>
         </nav>
           {% if user.is_authenticated %}
               {% if request.path == '/' %}
@@ -23,7 +23,7 @@
               {% elif request.path == '/post2' %}
                   <a href="{% url 'post_new2' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
               {% endif %}
-              <p class="top-menu">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
+              <p class="top-menu">안녕하세요, {{ user.username }}님 <x-small>(<a href="{% url 'logout' %}">로그아웃</a>)</x-small></p>
           {% else %}
               <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
           {% endif %}

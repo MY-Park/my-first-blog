@@ -1,28 +1,28 @@
 {% extends "blog/auth.html" %}
 {% block content %}
 
-    <div class="hero">
+    <div class="hero" style="background-color: #6798FD;">
         <h1>Tunnect</h1>
         <div class="form-box">
             {% if form.errors %}
-        <p>이름과 비밀번호가 일치하지 않습니다. 다시 시도해주세요.</p>
-    {% endif %}
+                <p>이름과 비밀번호가 일치하지 않습니다. 다시 시도해주세요.</p>
+            {% endif %}
           <div class="button-box">
             <div id="btn"></div>
             <button type="button" class="toggle-btn" onclick="login()">로그인</button>
             <button type="button" class="toggle-btn" onclick="register()">회원가입</button>
           </div>
           <form method="post" id="login" class="input-group" action="{% url 'login' %}">
-              {% csrf_token %}
-            <input type="text" class="input-field" id="{{ form.username.id_for_label }}" placeholder="아이디" name="{{ form.username.html_name }}" required>
-            <input type="text" class="input-field" id="{{ form.password.id_for_label }}" name="{{ form.password.html_name }}" placeholder="비밀번호" required>
-            <button type="submit" class="submit-btn">로그인</button>
-              <input type="hidden" name="next" value="{{ next }}" />
           </form>
           <form id="register" class="input-group" method="post">
               {% csrf_token %}
-                {{ form.as_p }}
-              <button type="submit" class="submit-btn">회원가입 완료</button>
+                <input type="text" class="input-field" id="{{ form.username.id_for_label }}" placeholder="아이디" name="{{ form.username.html_name }}" required>
+              <div id="idcheckmessage"></div>
+              <input type="email" class="input-field" id="{{ form.email.id_for_label }}" placeholder="이메일" name="{{ form.email.html_name }}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+              <input type="password" class="input-field" id="{{ form.password.id_for_label }}" name="{{ form.password.html_name }}" placeholder="비밀번호" required>
+              <input type="password" class="input-field" id="passwordcheck" placeholder="비밀번호확인" required>
+              <div id="passwordcheckmessage"></div>
+              <button type="submit" id="signupbutton" class="submit-btn" disabled>회원가입 완료</button>
           </form>
         </div>
     </div>
@@ -44,5 +44,58 @@
     y.style.left = "450px";
     z.style.left = "0px";
   }
+
+  function checkid(){
+    var field1 =  document.getElementById("{{ form.username.id_for_label }}");
+    var xmlhttp;
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+    }
+    else {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var response = xmlhttp.responseText;
+            var button = document.getElementById("signupbutton");
+            var message = document.getElementById("idcheckmessage");
+            if (response[0] == '0'){
+                message.innerHTML = "사용가능한 아이디입니다";
+                button.disabled = false;
+                checkpasswd();
+            }
+            else{
+            message.innerHTML = "아이디가 중복됩니다.";
+            button.disabled = true;
+            }
+
+        }
+    }
+    xmlhttp.open("GET", "/accounts/check/?" + "username=" + field1.value, true);
+    xmlhttp.send();
+  }
+  function checkpasswd(){
+    var field1 =  document.getElementById("{{ form.password.id_for_label }}");
+    var field2 =  document.getElementById("passwordcheck");
+    var button = document.getElementById("signupbutton");
+    var message = document.getElementById("passwordcheckmessage");
+    if (field1.value == field2.value && field1.value.length > 0){
+        button.disabled = false;
+        message.innerHTML = "";
+        checkid();
+    }
+    else {
+        button.disabled = true;
+        if (field1.value.length > 0)
+            message.innerHTML = "비밀번호가 일치하지 않습니다";
+    }
+  }
+
+  document.getElementById("passwordcheck").addEventListener("input", checkpasswd);
+  document.getElementById("{{ form.password.id_for_label }}").addEventListener("input", checkpasswd);
+
+  document.getElementById("{{ form.username.id_for_label }}").addEventListener("input", checkid);
+
   </script>
 {% endblock %}

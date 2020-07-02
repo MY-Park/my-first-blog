@@ -4,6 +4,7 @@ from . import views
 urlpatterns = [
     path('mypage/update_profile', views.update_profile, name='update_profile'),
     path('mypage', views.mypage, name='mypage'),
+    path('recommend', views.recommend, name='recommend'),
     path('', views.post_list, name='post_list'),
     path('post/<int:pk>/', views.post_detail, name='post_detail'),
     path('post/new/', views.post_new, name='post_new'),
@@ -21,4 +22,7 @@ urlpatterns = [
     path(r'^comment2/(?P<pk>\d+)/approve/$', views.comment_approve2, name='comment_approve2'),
     path(r'^comment2/(?P<pk>\d+)/remove/$', views.comment_remove2, name='comment_remove2'),
     path(r'accounts/signup/', views.signup, name='signup'),
+    path(r'accounts/check/', views.user_check, name='user_check'),
+    path(r'func/like/<int:pk><str:posttype>/', views.increment_like, name='like'),
+
 ]

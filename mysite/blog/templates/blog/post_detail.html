@@ -3,37 +3,72 @@
 {% block content %}
     <div class="post">
         {% if post.published_date %}
-            <div class="date">
+            <div class="date2">
                 {{ post.published_date }}
             </div>
             <div class="author">
-                작성자:{{ post.author }}
+                작성자: {{ post.author }}
             </div>
         {% endif %}
-        {% if user.is_authenticated %}
-            <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-            <a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+
+        {% if user == post.author %}
+            <a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}" style="float: right"><span class="glyphicon glyphicon-remove" style="float: right"></span></a>
+            <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}" style="float: right"><span class="glyphicon glyphicon-pencil" style="float: right"></span></a>
         {% endif %}
-        <h2>{{ post.title }}</h2>
+
+        <h2 >{{post.title }}</h2>
+
+        <div style="border-bottom: 1px solid gray; margin-bottom: 15px; margin-top: 10px">
+            좋아요 수: {{ num_like }}
+        </div>
+        {% if user != post.author %}
+                    <div class="like" style="float: right;">
+    {#                    좋아요 수: {{ num_like }},#}
+                        {% if userlike > 0 %}
+                            이미 좋아요를 눌렀어요
+                        {% else %}
+                            <a href="{% url 'like' pk=post.pk posttype='post' %}">좋아요</a>
+                        {% endif %}
+                    </div>
+                {% endif %}
+        <hr style="clear:both;">
+{#        <p>linebreaksbr</p>#}
         <p>{{ post.text|linebreaksbr}}</p>
     </div>
     <hr>
-    <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
-    {% for comment in post.comments.all %}
+    <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">댓글 달기</a>
+    {% for comment, usercnt in comzip %}
         {% if user.is_authenticated or comment.approved_comment %}
         <div class="comment">
-            <div class="date">
+            <div class="date" style="display: inline-block">
                 {{ comment.created_date }}
-                {% if not comment.approved_comment %}
+                {% if user == comment.author %}
                     <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+                {% endif %}
+                {% if not comment.approved_comment %}
                     <a class="btn btn-default" href="{% url 'comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
                 {% endif %}
             </div>
-            <strong>{{ comment.author }}</strong>
-            <p>{{ comment.text|linebreaks }}</p>
+            <hr style="clear:both;">
+            <div style="float: right; display: inline">
+                좋아요 수: {{ comment.likes.count }}
+                {% if user != comment.author %}
+                    {% if usercnt > 0 %}
+                        이미 좋아요를 눌렀어요
+                    {% else %}
+                        <a href="{% url 'like' pk=comment.pk posttype='comment' %}">좋아요</a>
+                    {% endif %}
+                {% endif %}
+            </div>
+
+            <div>
+                <strong>{{ comment.author }}</strong>
+                <p>{{ comment.text|linebreaks }}</p >
+            </div>
+
         </div>
         {% endif %}
     {% empty %}
-        <p>No comments here yet :(</p>
+        <p>아직 댓글이 없습니다 :(</p>
     {% endfor %}
 {% endblock %}

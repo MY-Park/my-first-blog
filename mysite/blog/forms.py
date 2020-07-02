@@ -13,11 +13,14 @@ class CommentForm(forms.ModelForm):
 
     class Meta:
         model = Comment
-        fields = ('author', 'text',)
+        fields = ('text',)
 
 class UserForm(forms.ModelForm):
     class Meta:
         model = User
+        widgets = {
+        'password': forms.PasswordInput(),
+        }
         fields = ('username', 'email', 'password')
 
 class ProfileForm(forms.ModelForm):
@@ -28,10 +31,10 @@ class ProfileForm(forms.ModelForm):
 class PostForm2(forms.ModelForm):
     class Meta:
         model = Post2
-        fields = ('title', 'text',)
+        fields = ('meeting_time','title', 'text',)
 
 class CommentForm2(forms.ModelForm):
 
     class Meta:
         model = Comment2
-        fields = ('author', 'text',)
+        fields = ('text',)

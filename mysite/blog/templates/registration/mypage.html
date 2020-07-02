@@ -1,10 +1,41 @@
 {% extends "blog/base.html" %}
 {% block content %}
     <h2>{{ user.get_full_name }}</h2>
-<ul>
-  <li>Username: {{ user.username }}</li>
-  <li>Interest: {{ user.profile.interest }}</li>
-  <li>Birth Date: {{ user.profile.birth_date }}</li>
-</ul>
-    <a href="{% url 'update_profile' %}">수정하기</a>
+
+<div class="mypage">
+    <ul class="board">
+        <li class="ltt_line l_line fl tc w200 list t_line lt_line" style="font-weight:bold">Username</li>
+        <li class="ltt_line fl tc w500 list t_line lt_line ">{{ user.username }}</li>
+    </ul>
+
+    <ul class="board">
+        <li class="l_line fl tc w200 list t_line lt_line" style="font-weight:bold">Interest</li>
+        <li class="fl tc w500 list t_line lt_line">{{ user.profile.interest }}</li>
+    </ul>
+
+    <ul class="board">
+        <li class="l_line fl tc w200 list t_line lt_line" style="font-weight:bold">Birth Date</li>
+        <li class="fl tc w500 list t_line lt_line">{{ user.profile.birth_date }}</li>
+    </ul>
+
+    <ul class="board">
+        <li class="l_line fl tc w200 list t_line lt_line" style="font-weight:bold">likes</li>
+        <li class="fl tc w500 list t_line lt_line">{{ like_count }}</li>
+
+    </ul>
+
+    <ul class="board">
+        <li class="l_line fl tc w200 list t_line lt_line" style="font-weight:bold">User Level</li>
+        <li class="fl tc w500 list t_line lt_line">
+            {% if like_count < 2 %} Bronze
+            {% elif like_count < 5 %} Silver
+            {% elif like_count < 8 %} Gold
+            {% else %} Platinum
+            {% endif %}
+        </li>
+    </ul>
+</div>
+<hr style="clear:both;">
+    <div style="margin-left: 650px; font-weight:bolder; font-size: 20px;"><a href="{% url 'update_profile' %}">수정하기</a></div>
+
 {% endblock %}

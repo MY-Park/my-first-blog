@@ -1,37 +1,65 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Pacifico&display=swap');
-
+/**{*/
+/*  margin: 0;*/
+/*  padding: 0;*/
+/*}*/
 a {
     color: #6798FD;
-    /*font-family: 'Noto Sans KR', sans-serif;*/
 }
 
 body {
-    padding-left: 15px;
+  /* background: #C3D2EF; */
+    background-color: aliceblue !important;
+}
+.container{
+    width: auto !important;
+    /*position: center;*/
+}
+.cons {
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 5 !important; /* number of lines to show */
+    -webkit-box-orient: vertical !important;
 }
 
 .page-header {
     background-color: #6798FD;
-    margin-top: 0;
+    /*margin-top: 0;*/
     padding: 20px 20px 20px 40px;
+    margin: 0 !important;
+
 }
 
 .page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
-    color: #ffffff;
-    font-size: 36pt;
+    color: black;
+    font-size: 40pt;
     text-decoration: none;
 }
 
 .content {
-    margin-left: 40px;
+    /*margin-left: 40px;*/
+    margin: auto !important;
+    padding: 0px !important;
+
+}
+.row{
+    /*margin: auto !important;*/
+    /*padding: 0px !important;*/
+    right: 5%;
+    left: 5%;
+    position: relative;
+    padding: 0 !important;
 }
 
-h1, h2, h3, h4 {
+h1 {
     font-family: 'Noto Sans KR', sans-serif;
-    /*font-family: 'Pacifico', cursive;*/
-}
+    text-shadow: 2px 2px 5px blue;
+    }
 
 .date {
     color: #828282;
+    float: right;
 }
 
 .save {
@@ -50,7 +78,10 @@ h1, h2, h3, h4 {
 }
 
 .post {
-    margin-bottom: 70px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    border: 1.5px solid #6798FD;
+    background-color: aliceblue;
 }
 
 .post h1 a, .post h1 a:visited {
@@ -58,5 +89,41 @@ h1, h2, h3, h4 {
 }
 
 .comment {
-    margin: 20px 0px 20px 20px;
+    /*margin: 20px 0px 20px 20px;*/
+    margin: auto !important;
 }
+.author{
+    margin-left: 0.2em;
+    border-left: 1px solid gray;
+    float: left;
+    color: #828282;
+}
+.date2 {
+
+    color: #828282;
+    float: left;
+}
+h2 {
+    margin-top: 30px !important;
+    margin-bottom: 10px !important;
+}
+
+/* user update table for all*/
+ul li {list-style:none; }
+.fl {float:left; }
+.tc {text-align:center; }
+
+/* user update table */
+.board {width: 900px; }
+.w500 {width:500px; }
+.w200 {width:200px; }
+.l_line {border-left:solid 1px gray;}
+.t_line {border-right:solid 1px gray;}
+.lt_line {border-bottom:solid 1px gray;}
+.ltt_line {border-top:solid 1px gray;}
+.list {
+	height: 40px;
+	line-height: 40px;
+	background: #C3D2EF;
+}
+

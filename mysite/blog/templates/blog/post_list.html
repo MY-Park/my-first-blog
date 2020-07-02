@@ -6,9 +6,19 @@
           <div class="date">
               <p>published: {{ post.published_date }}</p>
           </div>
-          <h1 style="font-family: Nanum Gothic, sans-serif"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-          <p>{{ post.text|linebreaksbr }}</p>
-          <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a>
+          <h1 style="font-family: Nanum Gothic, sans-serif" ><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+          <div class="cons">{{ post.text| linebreaksbr|linebreaksbr  }}</div>
+
+          {% if post.approved_comments.count > 0 %}
+              {% for comment in post.comments.all %}
+                  <a href="{% url 'post_detail' pk=post.pk %}">
+                  <strong>{{ comment.author }}</strong>
+                  {{ comment.text|linebreaks }}
+                  </a>
+              {% endfor %}
+          {% else %}
+              <a href="{% url 'post_detail' pk=post.pk %}">아직 댓글이 없습니다.</a>
+          {% endif %}
       </div>
   {% endfor %}
 {% endblock %}
